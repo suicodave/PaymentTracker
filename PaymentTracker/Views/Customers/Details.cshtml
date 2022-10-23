@@ -1,4 +1,7 @@
-﻿@{
+﻿@model Payment;
+@{
+    
+
     var customer = ViewData["Customer"] as Customer;
 
     var payments = ViewData["Payments"] as IEnumerable<Payment>;
@@ -14,6 +17,13 @@
 <br />
 <br />
 <br />
+<form method="post" asp-action="Create" asp-controller="Payments" >
+    <input asp-for="Amount" />
+    <input asp-for="EffectiveDate" type="date" />
+    <input asp-for="CustomerId" type="hidden" value="@customer.Id" />
+    <button>Create Payment</button>
+</form>
+
 <br />
 <br />
 <br />
