@@ -1,0 +1,39 @@
+﻿@{
+    var customer = ViewData["Customer"] as Customer;
+
+    var payments = ViewData["Payments"] as IEnumerable<Payment>;
+
+    ViewData["Title"] = $"{customer!.LastName}, {customer!.FirstName} Payments";
+}
+
+
+<h2>@customer!.LastName, @customer!.FirstName</h2>
+
+<h5>@customer!.Birthdate.ToShortDateString()</h5>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h2>
+    Payments
+</h2>
+
+<table border="1" cellpadding="25" width="100%">
+    <tr>
+        <th>Amount</th>
+        <th>Effective Date</th>
+    </tr>
+
+    @foreach (var payment in payments!)
+    {
+       <tr>
+            <td>@payment.Amount.ToString("#,###.00")</td>  
+            <td>@payment.EffectiveDate.ToShortDateString()</td>
+       </tr>
+    }
+
+</table>
