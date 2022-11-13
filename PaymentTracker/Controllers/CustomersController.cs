@@ -23,7 +23,18 @@ namespace PaymentTracker.Controllers
         // GET: CustomerController
         public async Task<ActionResult> Index()
         {
-            string query = "select * from customers order by FirstName,LastName";
+            string query = @"
+
+            select 
+
+            c.*,
+            (select sum(p.Amount) from Payments p where c.Id = p.CustomerId) TotalPayments
+
+            from 
+
+            customers c
+
+            order by FirstName,LastName";
 
             IEnumerable<Customer> customers = await connection.QueryAsync<Customer>(query) ?? Enumerable.Empty<Customer>();
 

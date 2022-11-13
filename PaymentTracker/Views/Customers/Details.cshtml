@@ -17,9 +17,20 @@
 <br />
 <br />
 <br />
+
 <form method="post" asp-action="Create" asp-controller="Payments" >
+    <label asp-for="Amount" ></label>
     <input asp-for="Amount" />
+
+    <br />
+    <br />
+
+    <label asp-for="EffectiveDate"></label>
     <input asp-for="EffectiveDate" type="date" />
+
+    <br />
+    <br />
+
     <input asp-for="CustomerId" type="hidden" value="@customer.Id" />
     <button>Create Payment</button>
 </form>

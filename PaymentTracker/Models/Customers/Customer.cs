@@ -9,5 +9,7 @@
         public string LastName { get; set; } = string.Empty;
 
         public DateTime Birthdate { get; set; }
+
+        public decimal TotalPayments { get; set; }
     }
 }
