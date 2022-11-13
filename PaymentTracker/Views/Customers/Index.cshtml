@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Customers";
 
-    var customers = ViewData["customers"] as IEnumerable<Customer>;
+    var customers = (IEnumerable<Customer>)ViewData["customers"]!;
 }
 
 <table border="1" cellpadding="25" width="100%">

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Payments";
+
+    IEnumerable<PaymentWithCustomerName> payments = (IEnumerable<PaymentWithCustomerName>)ViewData["payments"]!;
+}
+
+
+<table border="1" cellpadding="25" width="100%">
+    <tr>
+        <th>Id</th>
+        <th>Amount</th>
+        <th>Effective Date</th>
+        <th>Customer Name</th>
+    </tr>
+
+    @foreach (var payment in payments!)
+    {
+        <tr>
+            <td>@payment.Id</td>
+            <td>@payment.Amount</td>
+            <td>@payment.EffectiveDate.ToShortDateString()</td>
+            <td>@payment.CustomerName</td>
+            
+        </tr>
+    }
+</table>
+
