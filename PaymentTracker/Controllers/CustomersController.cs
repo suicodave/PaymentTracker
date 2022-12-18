@@ -80,16 +80,25 @@ namespace PaymentTracker.Controllers
         // POST: CustomerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Customer customer)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                return View(customer);
             }
-            catch
+
+            string query = "insert into customers values(@FirstName,@LastName,@Birthdate)";
+
+            object queryParams = new
             {
-                return View();
-            }
+                customer.FirstName,
+                customer.LastName,
+                customer.Birthdate,
+            };
+
+            await connection.ExecuteAsync(query, queryParams);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: CustomerController/Edit/5

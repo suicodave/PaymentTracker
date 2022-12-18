@@ -1,0 +1,35 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Create a customer";
+}
+
+
+
+<form method="post" asp-action="Create" asp-controller="Customers">
+    
+    <label asp-for="FirstName">First Name</label>
+    <input asp-for="FirstName"/>
+
+    <br />
+    <br />
+    <br />
+
+    <label asp-for="LastName">Last Name</label>
+    <input asp-for="LastName"/>
+
+    <br />
+    <br />
+    <br />
+
+
+    <label asp-for="Birthdate">Birthdate</label>
+    <input asp-for="Birthdate" type="date" max="@(DateTime.Now.ToString("yyyy-MM-dd"))" min="@(DateTime.Now.AddYears(-80).ToString("yyyy-MM-dd"))" />
+
+    
+    <br />
+    <br />
+    <br />
+
+    <button>Create</button>
+
+</form>
