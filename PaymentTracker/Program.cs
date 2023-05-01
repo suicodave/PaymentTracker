@@ -6,6 +6,10 @@ namespace PaymentTracker
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var services = builder.Services;
+
+            services.AddApplicationInsightsTelemetry();
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
